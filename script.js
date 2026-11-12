@@ -2,6 +2,7 @@
 let botaoMenu = document.querySelector("#btn-menu");
 let menu = document.querySelector(".nav");
 
+
 // 2. Escuta o evento de clique no botão
 botaoMenu.addEventListener("click", function () {
 
