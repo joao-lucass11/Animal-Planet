@@ -1,15 +1,29 @@
+/* ========================= */
+/* VARIÁVEIS                 */
+/* ========================= */
 :root {
-    --azul-escuro: #0E376D;
-    --azul: #2563EB;
-    --verde: #16A34A;
-    --verde-escuro: #15803D;
-    --texto-principal: #374151;
-    --texto-secundario: #6B7280;
-    --cor-borda: #03f17a;
+    /* Azuis (da logo e do dashboard) */
+    --azul-escuro: #0B2F9E;
+    --azul: #1D4ED8;
+    --azul-claro: #E0E7FF;
+
+    /* Laranjas (da logo e do dashboard) */
+    --laranja: #FF6B00;
+    --laranja-escuro: #E05A00;
+    --laranja-claro: #FFE8D6;
+
+    /* Textos e bordas */
+    --texto-principal: #1F2937;
+    --texto-secundario: #4B5563;
+    --cor-borda: #E5E7EB;
     --cor-fundo: #FFFFFF;
+
+    /* Fundo do Hero */
+    --fundo-hero: #EEF2FF;
 }
 
 
+/* RESET */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -17,6 +31,7 @@
 }
 
 
+/* BODY */
 body {
     font-family: "Poppins", sans-serif;
     color: var(--texto-principal);
@@ -24,168 +39,404 @@ body {
 }
 
 
+/* ========================= */
+/* HEADER                    */
+/* ========================= */
 header {
+    width: 100%;
+    background-color: var(--cor-fundo);
+    border-bottom: 1px solid var(--cor-borda);
+
     position: sticky;
     top: 0;
     z-index: 100;
-    background-color: var(--cor-fundo);
-    border-bottom: 1px solid var(--cor-borda);
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 15px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 60px;
 }
-
-
-
-
-
-
-
 
 .header-inner {
-    max-width: 1200px; /* É o máximo da largura */
-    margin: -50 auto; /* margem 0 em cima/baixo e
-    "auto nas laterais */
-    padding: 0 24px; /* espaço interno: 0 em cima/baixo e 24px nas laterais */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 8px 24px;
 
-
-    /* Aplicação do Flexbox */
-    display: flex; /* Transforma essa div em um
-    "container flexisivél". Isso é o que permite
-    colocar logo, menu e botões um do lado do outro */
-
-
-    align-items: center; /* Alinha os intes no
-    CENTRO verticalmente dentro do header */
-
-
-    justify-content: space-between; /* Distribui os itens: o primeiro cola na esquerda, o último
-    cola na direita, e sobre espaço entre eles */
-
-
-    gap: 24px /* Espaço mínimo entre os itens (logo, menu e botões) */
-
-
-}
-
-
-.logo {
+    display: flex;
     align-items: center;
-    display: block;
+    justify-content: space-between;
+
+    min-height: 64px;
 }
 
+/* LOGO */
+.logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+}
 
 .logo img {
     width: 200px;
+    height: auto;
+    display: block;
 }
 
-
-.nome-projeto h1 {
-    font-size: 24px;
-    color: var(--azul-escuro);
-}
-
-
-nav ul {
+/* NAV */
+.nav {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 32px;
+}
+
+.nav ul {
+    display: flex;
+    align-items: center;
+    gap: 26px;
     list-style: none;
 }
 
+.nav ul li {
+    display: flex;
+    align-items: center;
+}
 
 .nav a {
     color: var(--texto-principal);
     text-decoration: none;
     font-size: 14px;
+    font-weight: 400;
     white-space: nowrap;
-    transition: color .2s ease;
+    transition: color 0.2s ease;
 }
 
-
-nav a:hover {
-    color: var(--verde);
+.nav a:hover {
+    color: var(--laranja);
 }
 
-
+/* BOTÕES DO HEADER */
 .acoes {
     display: flex;
     align-items: center;
     gap: 12px;
-    cursor: pointer;
 }
-
-
 
 .acoes a {
-    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 40px;
+    padding: 0 18px;
+    border-radius: 9px;
+
     font-size: 14px;
     font-weight: 500;
-    padding: 9px 16px;
-    border-radius: 6px;
+    text-decoration: none;
+    white-space: nowrap;
 }
 
-
-.acoes a:first-child {
-    color: var(--azul-escuro);
-    border: 1px solid var(--azul-escuro);
+/* ENTRAR */
+.btn-entrar {
+    color: var(--azul-escuro) !important;
+    background-color: #FFFFFF;
+    border: 1px solid var(--cor-borda);
 }
 
-
-.acoes a:last-child {
-    color: var(--cor-fundo);
-    background-color: var(--verde);
-    border: 1px solid var(--verde);
+/* CADASTRAR (era verde, agora laranja) */
+.btn-cadastrar {
+    color: #FFFFFF !important;
+    background-color: var(--laranja);
+    border: 1px solid var(--laranja);
 }
 
+.btn-entrar:hover {
+    background-color: var(--azul-claro);
+}
+
+.btn-cadastrar:hover {
+    background-color: var(--laranja-escuro);
+}
+
+/* BOTÃO HAMBÚRGUER */
 .hamburguer {
     display: none;
-    font-size: 30px;
-    background: none;
+
     border: none;
+    background: transparent;
+    font-size: 28px;
     cursor: pointer;
+    color: var(--azul-escuro);
 }
+
+
+/* ========================= */
+/* HERO                      */
+/* ========================= */
+.hero {
+    background-color: var(--fundo-hero);
+    padding: 72px 24px;
+}
+
+/* DUAS COLUNAS COM GRID */
+.hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 48px;
+}
+
+/* ETIQUETA */
+.etiqueta {
+    display: inline-block;
+
+    padding: 6px 14px;
+    margin-bottom: 20px;
+
+    background-color: var(--laranja-claro);
+    color: var(--laranja-escuro);
+
+    border-radius: 999px;
+
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* TÍTULO */
+.hero h1 {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.15;
+    text-transform: uppercase;
+    color: var(--azul-escuro);
+
+    margin-bottom: 20px;
+}
+
+/* PALAVRA DESTACADA */
+.hero h1 span {
+    color: var(--laranja);
+}
+
+/* DESCRIÇÃO */
+.hero-descricao {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--texto-secundario);
+
+    max-width: 520px;
+    margin-bottom: 32px;
+}
+
+/* BOTÕES COM FLEXBOX */
+.hero-botoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    margin-bottom: 32px;
+}
+
+/* BOTÃO BASE */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+    border: 2px solid transparent;
+
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* TAMANHO GRANDE */
+.btn-grande {
+    height: 52px;
+    padding: 0 28px;
+    font-size: 16px;
+}
+
+/* BOTÃO PRIMÁRIO (laranja) */
+.btn-primario {
+    background-color: var(--laranja);
+    color: #FFFFFF;
+    border-color: var(--laranja);
+}
+
+.btn-primario:hover {
+    background-color: var(--laranja-escuro);
+    border-color: var(--laranja-escuro);
+}
+
+/* BOTÃO SECUNDÁRIO (azul, vazado) */
+.btn-secundario {
+    background-color: transparent;
+    color: var(--azul-escuro);
+    border-color: var(--azul-escuro);
+}
+
+.btn-secundario:hover {
+    background-color: var(--azul-escuro);
+    color: #FFFFFF;
+}
+
+/* VANTAGENS COM FLEXBOX */
+.vantagens {
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.vantagens li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--texto-principal);
+}
+
+/* ÍCONE DA VANTAGEM */
+.vantagens .material-symbols-outlined {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+
+    border-radius: 10px;
+    background-color: var(--azul);
+    color: #FFFFFF;
+
+    font-size: 20px;
+}
+
+/* IMAGEM */
+.hero-imagem img {
+    display: block;
+    width: 100%;
+    height: auto;
+
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(11, 47, 158, 0.25);
+}
+
+
+/* ========================= */
+/* RESPONSIVIDADE            */
+/* ========================= */
+@media (max-width: 1000px) {
+
+    .nav {
+        gap: 18px;
+    }
+
+    .nav ul {
+        gap: 16px;
+    }
+
+    .nav a {
+        font-size: 13px;
+    }
+
+    .logo img {
+        width: 170px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+}
+
 
 @media (max-width: 768px) {
 
-    .hamburguer {
-        display: block;
-        margin-left: auto;
+    .header-inner {
+        padding: 10px 20px;
     }
 
+    .logo img {
+        width: 160px;
+    }
+
+    /* MOSTRA O HAMBÚRGUER */
+    .hamburguer {
+        display: block;
+    }
+
+    /* ESCONDE O MENU NORMAL */
     .nav {
         display: none;
     }
 
+    /* MENU ABERTO */
     .nav.ativo {
         display: flex;
         flex-direction: column;
+        align-items: flex-start;
+
         position: absolute;
         top: 100%;
         left: 0;
+
         width: 100%;
-        background-color: var(--cor-fundo);
-        padding: 15px 24px;
+        padding: 20px 24px;
+
+        background-color: #FFFFFF;
+        border-bottom: 1px solid var(--cor-borda);
+
+        gap: 20px;
     }
 
-    .nav ul {
+    .nav.ativo ul {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+
         width: 100%;
-        gap: 15px;
-        list-style: none;
-        padding: 0;
-        margin: 0;
+        gap: 18px;
     }
 
-    .acoes {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+    .nav.ativo .acoes {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav.ativo .acoes a {
+        width: 100%;
+    }
+
+    /* HERO EM UMA COLUNA */
+    .hero {
+        padding: 48px 20px;
+    }
+
+    .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero-botoes .btn {
+        width: 100%;
     }
 }
